@@ -1,22 +1,23 @@
-import { Codes } from "./queries/errors";
-import { usePosts } from "./queries/posts";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import { Admin } from "./components/Admin";
+import { Post } from "./components/Post";
+import { Header } from "./components/Header";
+import { Login } from "./components/Login";
+import { Posts } from "./components/Posts";
 
 function App() {
-  const { isLoading, error, data } = usePosts();
-
-  if (isLoading) {
-    return <>Loading...</>;
-  }
-
-  if (error?.status === Codes.UNAUTHORIZED) {
-    return <>Logout</>;
-  }
-
-  if (error) {
-    return <>Bad news</>;
-  }
-
-  return <div>{JSON.stringify(data)}</div>;
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/posts" component={Posts} />
+        <Route path="/post/:id" component={Post} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/login" component={Login} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

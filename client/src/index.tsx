@@ -3,7 +3,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>

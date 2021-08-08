@@ -15,6 +15,15 @@ app.get("/api/posts", (req, res) => {
   res.json(posts);
 });
 
+app.get("/api/post/admin", (req, res) => {
+  res.status(401).send();
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+function addPost() {
+  const id = Math.max(...posts.map(({ id }) => id)) + 1;
+  posts.push({ id, title: `Post number ${id}` });
+}
