@@ -5,6 +5,7 @@ import { Post } from "./components/Post";
 import { Header } from "./components/Header";
 import { Login } from "./components/Login";
 import { Posts } from "./components/Posts";
+import { NewPost } from "./components/NewPost";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/post/:id" component={Post} />
         <Route path="/admin" component={Admin} />
         <Route path="/login" component={Login} />
+        <Route path="/create-post" component={NewPost} />
       </Switch>
     </Router>
   );

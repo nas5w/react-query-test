@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import axios, { AxiosError } from "axios";
 
 type Post = { id: number; title: string };
@@ -32,6 +32,17 @@ async function getPostAdmin() {
 
 export const usePostAdmin = () => {
   return useQuery<Post, AxiosError>("post", getPostAdmin, {
+    retry: 0,
+  });
+};
+
+async function createPost(title: string) {
+  const { data } = await axios.post<{}>("/api/post", { title });
+  return data;
+}
+
+export const useCreatePost = (title: string) => {
+  return useMutation<{}, AxiosError>(() => createPost(title), {
     retry: 0,
   });
 };

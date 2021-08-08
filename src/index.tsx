@@ -6,7 +6,7 @@ import App from "./App";
 // Fake backend
 import "./backend";
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       suspense: true,

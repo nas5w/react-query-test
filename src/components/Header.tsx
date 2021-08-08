@@ -13,6 +13,9 @@ export const Header = () => (
       <li>
         Unauthenticated query (401): <Link to="/admin">Admin section</Link>
       </li>
+      <li>
+        Mutating: <Link to="/create-post">Create post</Link>
+      </li>
     </ul>
   </header>
 );
